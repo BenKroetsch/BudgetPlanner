@@ -126,7 +126,7 @@ public class BudgetApp {
         System.out.println("1 - Transportation");
         System.out.println("2 - Groceries and Food");
         System.out.println("3 - Entertainment");
-        System.out.println("4 - Housing costs");
+        System.out.println("4 - Housing");
         int category = input.nextInt();
         String expenseCategory = assignCategory(category);
         Expense a1 = new Expense(expenseName, expenseCost, expenseCategory);
@@ -146,7 +146,7 @@ public class BudgetApp {
         if (category == 3) {
             return "Entertainment";
         } else {
-            return "Housing costs";
+            return "Housing";
         }
     }
 

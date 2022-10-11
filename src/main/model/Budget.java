@@ -39,7 +39,7 @@ public class Budget {
         if (Objects.equals(type, "Transportation")) {
             this.transportationSpent += expense.getCost();
         }
-        if (Objects.equals(type, "Housing costs")) {
+        if (Objects.equals(type, "Housing")) {
             this.housingSpent += expense.getCost();
         }
         this.balance -= expense.getCost();
@@ -47,9 +47,9 @@ public class Budget {
         expenseList.add(expense);
     }
 
-    //requires:
+    //requires: expense to be removed is already  inside list
     //modifies: this
-    //effects: removes expense from budget
+    //effects: removes expense from budget list and adds expense amount back to category and balance
     public void removeExpense(Expense expense) {
         String expenseCategory = expense.getCategory();
         if (Objects.equals(expenseCategory, "Entertainment")) {

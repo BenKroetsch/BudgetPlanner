@@ -14,6 +14,7 @@ class MyModelTest {
     Expense expense4;
     Expense expense5;
     Expense expense6;
+    Expense expense7;
 
     @BeforeEach
     public void initialize(){
@@ -21,10 +22,11 @@ class MyModelTest {
         testBudget2 = new Budget("Joe's Budget", 1000);
         expense1 = new Expense("Hockey", 500, "Entertainment");
         expense2 = new Expense("Car Insurance", 450, "Entertainment");
-        expense3 = new Expense("Rent", 1000,"Housing costs");
+        expense3 = new Expense("Rent", 1000,"Housing");
         expense4 = new Expense("Coffee", 3, "Groceries and Food");
         expense5 = new Expense("Soccer", 100, "Entertainment");
         expense6 = new Expense("Zero", 0, "Transportation");
+        expense7 = new Expense("Car", 100, "Transportation");
     }
 
     @Test
@@ -95,6 +97,7 @@ class MyModelTest {
         assertEquals(testBudget2.getExpenseList().get(1), expense3);
         assertEquals(testBudget2.getEntertainmentSpent(),450);
         assertEquals(testBudget2.getHousingSpent(),1000);
+        assertEquals(testBudget2.getGroceriesSpent(),0);
 
         testBudget2.removeExpense(expense3);
         assertEquals(testBudget2.getBudget(), 1000);
@@ -102,7 +105,28 @@ class MyModelTest {
         assertEquals(testBudget2.getExpenseList().size(), 1);
         assertEquals(testBudget2.getExpenseList().get(0), expense2);
         assertEquals(testBudget2.getEntertainmentSpent(),450);
-        // fix assertEquals(testBudget2.getHousingSpent(),1000);
+        assertEquals(testBudget2.getHousingSpent(),0);
 
+        testBudget2.removeExpense(expense2);
+        assertEquals(testBudget2.getBudget(), 1000);
+        assertEquals(testBudget2.getBalance(), 1000);
+        assertEquals(testBudget2.getExpenseList().size(), 0);
+        assertEquals(testBudget2.getEntertainmentSpent(),0);
+
+        testBudget2.addExpense(expense6);
+        testBudget2.removeExpense(expense6);
+        assertEquals(testBudget2.getBudget(), 1000);
+        assertEquals(testBudget2.getBalance(), 1000);
+        assertEquals(testBudget2.getExpenseList().size(), 0);
+        assertEquals(testBudget2.getTransportationSpent(),0);
+
+        testBudget2.addExpense(expense4);
+        testBudget2.removeExpense(expense4);
+        assertEquals(testBudget2.getBudget(), 1000);
+        assertEquals(testBudget2.getBalance(), 1000);
+        assertEquals(testBudget2.getExpenseList().size(), 0);
+        assertEquals(testBudget2.getGroceriesSpent(),0);
+        assertEquals(testBudget2.getTransportationSpent(),0);
+        assertEquals(testBudget2.getHousingSpent(),0);
     }
 }
