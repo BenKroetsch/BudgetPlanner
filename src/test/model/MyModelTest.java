@@ -30,21 +30,21 @@ class MyModelTest {
     }
 
     @Test
-    public void testBudgetConstructor() {
+    public void budgetConstructorTest() {
         assertEquals(testBudget1.getBalance(), 400);
         assertEquals(testBudget1.getBudget(), 400);
         assertEquals(testBudget1.getName(), "Ben's Budget");
     }
 
     @Test
-    public void testExpenseConstructor() {
+    public void ExpenseConstructorTest() {
         assertEquals(expense1.getCost(), 500);
         assertEquals(expense1.getCategory(), "Entertainment");
         assertEquals(expense1.getName(), "Hockey");
     }
 
     @Test
-    public void testAddExpense() {
+    public void AddExpenseTest() {
         testBudget2.addExpense(expense1);
         assertEquals(testBudget2.getBudget(), 1000);
         assertEquals(testBudget2.getBalance(), 500);
@@ -84,7 +84,7 @@ class MyModelTest {
 
 
     @Test
-    public void testRemoveExpense() {
+    public void RemoveExpenseTest() {
         testBudget2.addExpense(expense1);
         testBudget2.addExpense(expense2);
         testBudget2.addExpense(expense3);

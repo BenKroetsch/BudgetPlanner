@@ -5,7 +5,6 @@ import model.Expense;
 
 import java.util.List;
 import java.util.Scanner;
-import java.util.StringJoiner;
 
 import static java.lang.Math.abs;
 
@@ -108,13 +107,19 @@ public class BudgetApp {
 
     // Effects: concatenates expenses in a neat list separated by commas
     public void printList(List<String> list1) {
-        //found next 3 lines found at https://www.techiedelight.com/print-list-elements-separated-by-comma-java/
-        StringJoiner joiner = new StringJoiner(", ");
-        list1.forEach(joiner::add);
-        System.out.println("Expenses: " + joiner);
+        StringBuilder s1 = new StringBuilder();
+        int s = list1.size();
+        int i = 1;
+        for (String a : list1) {
+            if (s > i) {
+                s1.append(a).append(", ");
+                i++;
+            } else {
+                s1.append(a);
+            }
+        }
+        System.out.println(s1);
     }
-
-
 
 
     // Effects: allows user to create and add expense
