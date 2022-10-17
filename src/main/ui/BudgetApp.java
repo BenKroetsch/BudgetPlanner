@@ -29,6 +29,8 @@ public class BudgetApp {
         System.out.println("Enter the amount you would like for this budget:");
         int desiredBudget = input.nextInt();
 
+        //clears next line to avoid bug
+        input.nextLine();
         userBudget = new Budget(name, desiredBudget);
     }
 
@@ -106,6 +108,7 @@ public class BudgetApp {
 
     // Effects: concatenates expenses in a neat list separated by commas
     public void printList(List<String> list1) {
+        //found next 3 lines found at https://www.techiedelight.com/print-list-elements-separated-by-comma-java/
         StringJoiner joiner = new StringJoiner(", ");
         list1.forEach(joiner::add);
         System.out.println("Expenses: " + joiner);
@@ -116,9 +119,12 @@ public class BudgetApp {
 
     // Effects: allows user to create and add expense
     private void createExpense() {
+        //clears next line to avoid bug
+        input.nextLine();
+
         System.out.println();
         System.out.println("Enter expenses name:");
-        String expenseName = input.next();
+        String expenseName = input.nextLine();
         System.out.println("Enter expenses cost:");
         int expenseCost = input.nextInt();
 
@@ -155,9 +161,12 @@ public class BudgetApp {
     private void removeExpense() {
         boolean expenseLoop = true;
         while (expenseLoop) {
+            //clears next line to avoid bug
+            input.nextLine();
+
             System.out.println("Enter the name of the expense you would like removed: ");
             printList(userBudget.getExpenseStringList());
-            String expenseStringToRemove = input.next();
+            String expenseStringToRemove = input.nextLine();
 
             if (userBudget.getExpenseStringList().contains(expenseStringToRemove)) {
                 int index = userBudget.getExpenseStringList().indexOf(expenseStringToRemove);
