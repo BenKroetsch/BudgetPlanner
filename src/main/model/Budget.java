@@ -26,8 +26,8 @@ public class Budget {
 
     //Requires:
     //Modifies: this
-    //Effects: subtracts expense from budget, and adds the cost of the expense to appropriate
-    // category and adds expense to list of expenses
+    //Effects: adds expense to budget list and adds expense to category
+    // and subtracts the expense cost back from balance
     public void addExpense(Expense expense) {
         String type = expense.getCategory();
         if (Objects.equals(type, "Entertainment")) {
@@ -49,7 +49,8 @@ public class Budget {
 
     //requires: expense to be removed is already  inside list
     //modifies: this
-    //effects: removes expense from budget list and adds expense amount back to category and balance
+    //effects: removes expense from budget list and removes expense amount from to category it was in
+    // and adds the expense cost back to balance
     public void removeExpense(Expense expense) {
         String expenseCategory = expense.getCategory();
         if (Objects.equals(expenseCategory, "Entertainment")) {
