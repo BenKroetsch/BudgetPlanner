@@ -14,6 +14,8 @@ import java.util.stream.Stream;
 public class JsonReader {
     private String source;
 
+    //the following methods are partially credited to JsonSerializationDemo
+
     // EFFECTS: constructs reader to read from source file
     public JsonReader(String source) {
         this.source = source;
@@ -38,7 +40,7 @@ public class JsonReader {
         return contentBuilder.toString();
     }
 
-    // EFFECTS: parses workroom from JSON object and returns it
+    // EFFECTS: parses budget from JSON object and returns it
     private Budget parseBudget(JSONObject jsonObject) {
         String name = jsonObject.getString("Budget Name");
         String budgetString = jsonObject.getString("Budget Amount");
@@ -48,8 +50,8 @@ public class JsonReader {
         return budget;
     }
 
-    // MODIFIES: wr
-    // EFFECTS: parses thingies from JSON object and adds them to workroom
+    // MODIFIES: budget
+    // EFFECTS: parses expense from JSON object and adds them to budget
     private void addExpenses(Budget budget, JSONObject jsonObject) {
         JSONArray jsonArray = jsonObject.getJSONArray("Expense List");
         for (Object json : jsonArray) {
@@ -58,8 +60,8 @@ public class JsonReader {
         }
     }
 
-    // MODIFIES: wr
-    // EFFECTS: parses thingy from JSON object and adds it to workroom
+    // MODIFIES: budget
+    // EFFECTS: parses expenses from JSON object and adds it to workroom
     private void addExpense(Budget budget, JSONObject jsonObject) {
         String name = jsonObject.getString("name");
         String costString = jsonObject.getString("cost");

@@ -1,16 +1,15 @@
 package persistence;
 
 import model.Budget;
-import model.Expense;
 import org.junit.jupiter.api.Test;
-
 import java.io.IOException;
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
 public class JsonReadTest extends JsonTest{
+
+    //the following methods are partially credited to JsonSerializationDemo
+
     @Test
     void testReaderNonExistentFile() {
         JsonReader reader = new JsonReader("./data/noSuchFile.json");
@@ -24,19 +23,19 @@ public class JsonReadTest extends JsonTest{
 
     @Test
     void testReaderEmptyBudget() {
-        JsonReader reader = new JsonReader("./data/testReaderEmptyWorkRoom.json");
+        JsonReader reader = new JsonReader("./data/testWriterEmptyWorkRoom.json");
         try {
             Budget budget = reader.read();
             assertEquals("July Budget", budget.getName());
             assertEquals(0, budget.getExpenseList().size());
         } catch (IOException e) {
-            //fail("Couldn't read from file");
+            fail("Couldn't read from file");
         }
     }
 
     @Test
     void testReaderGeneralBudget() {
-        JsonReader reader = new JsonReader("./data/testReaderGeneralWorkRoom.json");
+        JsonReader reader = new JsonReader("./data/testWriterGeneralWorkRoom.json");
         try {
             Budget budget = reader.read();
             assertEquals("July Budget", budget.getName());
@@ -44,7 +43,7 @@ public class JsonReadTest extends JsonTest{
             checkExpense("Coffee", 5, "Transportation", budget.getExpenseList().get(0));
             checkExpense("Ben", 51, "Groceries and Food", budget.getExpenseList().get(1));
         } catch (IOException e) {
-            //fail("Couldn't read from file");
+            fail("Couldn't read from file");
         }
     }
 }
