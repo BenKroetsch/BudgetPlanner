@@ -1,20 +1,18 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class Budget {
+public class Budget implements Writable {
     private String name;
     private int budget;
     private int balance;
 
     private ArrayList<Expense> expenseList = new ArrayList<>();
-    private ArrayList<String> expenseStringList = new ArrayList<>();
-    private int entertainmentSpent;
-    private int groceriesSpent;
-    private int transportationSpent;
-    private int housingSpent;
-
 
     //Requires: budget is an integer
     //Effects: creates new budget
@@ -29,21 +27,7 @@ public class Budget {
     //Effects: adds expense to budget list and adds expense to category
     // and subtracts the expense cost back from balance
     public void addExpense(Expense expense) {
-        String type = expense.getCategory();
-        if (Objects.equals(type, "Entertainment")) {
-            this.entertainmentSpent += expense.getCost();
-        }
-        if (Objects.equals(type, "Groceries and Food")) {
-            this.groceriesSpent += expense.getCost();
-        }
-        if (Objects.equals(type, "Transportation")) {
-            this.transportationSpent += expense.getCost();
-        }
-        if (Objects.equals(type, "Housing")) {
-            this.housingSpent += expense.getCost();
-        }
         this.balance -= expense.getCost();
-        expenseStringList.add(expense.getName());
         expenseList.add(expense);
     }
 
@@ -52,22 +36,39 @@ public class Budget {
     //effects: removes expense from budget list and removes expense amount from to category it was in
     // and adds the expense cost back to balance
     public void removeExpense(Expense expense) {
-        String expenseCategory = expense.getCategory();
-        if (Objects.equals(expenseCategory, "Entertainment")) {
-            this.entertainmentSpent -= expense.getCost();
-        }
-        if (Objects.equals(expenseCategory, "Groceries and Food")) {
-            this.groceriesSpent -= expense.getCost();
-        }
-        if (Objects.equals(expenseCategory, "Transportation")) {
-            this.transportationSpent -= expense.getCost();
-        }
-        if (Objects.equals(expenseCategory, "Housing")) {
-            this.housingSpent -= expense.getCost();
-        }
         this.balance += expense.getCost();
-        expenseStringList.remove(expense.getName());
         expenseList.remove(expense);
+    }
+
+    //Effects: adds up total money of all expenses in list
+    public int addUpList(String category) {
+        int totalMoney = 0;
+        for (Expense expense : expenseList) {
+            if (Objects.equals(category, expense.getCategory())) {
+                totalMoney += expense.getCost();
+            }
+        }
+        return totalMoney;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("Budget Name", name);
+        json.put("Budget Amount", String.valueOf(budget));
+        json.put("Expense List", expenseListToJson());
+        return json;
+    }
+
+    // EFFECTS: returns expense list in this budget as a JSON array
+    private JSONArray expenseListToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Expense expense : expenseList) {
+            jsonArray.put(expense.toJson());
+        }
+
+        return jsonArray;
     }
 
 
@@ -81,26 +82,6 @@ public class Budget {
 
     public int getBalance() {
         return balance;
-    }
-
-    public int getHousingSpent() {
-        return housingSpent;
-    }
-
-    public int getEntertainmentSpent() {
-        return entertainmentSpent;
-    }
-
-    public int getGroceriesSpent() {
-        return groceriesSpent;
-    }
-
-    public int getTransportationSpent() {
-        return transportationSpent;
-    }
-
-    public ArrayList<String> getExpenseStringList() {
-        return expenseStringList;
     }
 
     public ArrayList<Expense> getExpenseList() {

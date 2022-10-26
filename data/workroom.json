@@ -1,0 +1,9 @@
+{
+    "Expense List": [{
+        "cost": "3",
+        "name": "Coffee",
+        "category": "Groceries and Food"
+    }],
+    "Budget Amount": "5000",
+    "Budget Name": "July"
+}

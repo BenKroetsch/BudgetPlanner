@@ -49,13 +49,13 @@ class MyModelTest {
         assertEquals(testBudget2.getBudget(), 1000);
         assertEquals(testBudget2.getBalance(), 500);
         assertEquals(testBudget2.getName(), "Joe's Budget");
-        assertEquals(testBudget2.getEntertainmentSpent(), 500);
+        assertEquals(testBudget2.addUpList("Entertainment"), 500);
         assertEquals((testBudget2.getExpenseList().size()), 1);
         assertEquals(testBudget2.getExpenseList().get(0), expense1);
 
         testBudget2.addExpense(expense6);
-        assertEquals(testBudget2.getEntertainmentSpent(), 500);
-        assertEquals(testBudget2.getTransportationSpent(), 0);
+        assertEquals(testBudget2.addUpList("Entertainment"), 500);
+        assertEquals(testBudget2.addUpList("Transportation"), 0);
         assertEquals(testBudget2.getBudget(), 1000);
         assertEquals(testBudget2.getBalance(), 500);
         assertEquals(testBudget2.getName(), "Joe's Budget");
@@ -71,14 +71,14 @@ class MyModelTest {
         assertEquals(testBudget2.getExpenseList().get(0), expense1);
         assertEquals(testBudget2.getExpenseList().get(1), expense6);
         assertEquals(testBudget2.getExpenseList().get(2), expense2);
-        assertEquals(testBudget2.getGroceriesSpent(), 0);
+        assertEquals(testBudget2.addUpList("Groceries and Food"), 0);
 
         testBudget2.addExpense(expense3);
-        assertEquals(testBudget2.getHousingSpent(), 1000);
+        assertEquals(testBudget2.addUpList("Housing"), 1000);
         assertEquals(testBudget2.getBalance(), 50 - 1000);
 
         testBudget2.addExpense(expense4);
-        assertEquals(testBudget2.getGroceriesSpent(), 3);
+        assertEquals(testBudget2.addUpList("Groceries and Food"), 3);
 
     }
 
@@ -95,38 +95,38 @@ class MyModelTest {
         assertEquals(testBudget2.getExpenseList().size(), 2);
         assertEquals(testBudget2.getExpenseList().get(0), expense2);
         assertEquals(testBudget2.getExpenseList().get(1), expense3);
-        assertEquals(testBudget2.getEntertainmentSpent(),450);
-        assertEquals(testBudget2.getHousingSpent(),1000);
-        assertEquals(testBudget2.getGroceriesSpent(),0);
+        assertEquals(testBudget2.addUpList("Entertainment"),450);
+        assertEquals(testBudget2.addUpList("Housing"),1000);
+        assertEquals(testBudget2.addUpList("Groceries and Food"),0);
 
         testBudget2.removeExpense(expense3);
         assertEquals(testBudget2.getBudget(), 1000);
         assertEquals(testBudget2.getBalance(), 550);
         assertEquals(testBudget2.getExpenseList().size(), 1);
         assertEquals(testBudget2.getExpenseList().get(0), expense2);
-        assertEquals(testBudget2.getEntertainmentSpent(),450);
-        assertEquals(testBudget2.getHousingSpent(),0);
+        assertEquals(testBudget2.addUpList("Entertainment"),450);
+        assertEquals(testBudget2.addUpList("Housing"),0);
 
         testBudget2.removeExpense(expense2);
         assertEquals(testBudget2.getBudget(), 1000);
         assertEquals(testBudget2.getBalance(), 1000);
         assertEquals(testBudget2.getExpenseList().size(), 0);
-        assertEquals(testBudget2.getEntertainmentSpent(),0);
+        assertEquals(testBudget2.addUpList("Entertainment"),0);
 
         testBudget2.addExpense(expense6);
         testBudget2.removeExpense(expense6);
         assertEquals(testBudget2.getBudget(), 1000);
         assertEquals(testBudget2.getBalance(), 1000);
         assertEquals(testBudget2.getExpenseList().size(), 0);
-        assertEquals(testBudget2.getTransportationSpent(),0);
+        assertEquals(testBudget2.addUpList("Entertainment"),0);
 
         testBudget2.addExpense(expense4);
         testBudget2.removeExpense(expense4);
         assertEquals(testBudget2.getBudget(), 1000);
         assertEquals(testBudget2.getBalance(), 1000);
         assertEquals(testBudget2.getExpenseList().size(), 0);
-        assertEquals(testBudget2.getGroceriesSpent(),0);
-        assertEquals(testBudget2.getTransportationSpent(),0);
-        assertEquals(testBudget2.getHousingSpent(),0);
+        assertEquals(testBudget2.addUpList("Groceries and Food"),0);
+        assertEquals(testBudget2.addUpList("Transportation"),0);
+        assertEquals(testBudget2.addUpList("Housing"),0);
     }
 }

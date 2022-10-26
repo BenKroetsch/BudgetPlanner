@@ -21,3 +21,5 @@ As a user, I want to be able to removes expenses from my budget <br>
 As a user, I want to be able to view a summary of my budget with spending<br>
 in each category and a list of current expenses <br>
 As a user, I want to be able to sort my expenses into different categories inside my budget. <br>
+As a user, I want to be able to save my budget before I exit the application. <br>
+As a user, I want to be able to load a prior saved budget.

@@ -1,6 +1,9 @@
 package model;
 
-public class Expense {
+import org.json.JSONObject;
+import persistence.Writable;
+
+public class Expense implements Writable {
     private int cost;
     private String name;
     private String category;
@@ -12,6 +15,15 @@ public class Expense {
         this.name = name;
         this.cost = cost;
         this.category = category;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("cost", String.valueOf(cost));
+        json.put("category", category);
+        return json;
     }
 
     public String getCategory() {
