@@ -5,12 +5,11 @@ import model.Expense;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
-public class JsonWriteTest extends JsonTest{
+public class JsonWriteTest extends JsonTest {
 
     //the following methods are partially credited to JsonSerializationDemo
     @Test
@@ -29,12 +28,12 @@ public class JsonWriteTest extends JsonTest{
     void testWriterBudget() {
         try {
             Budget budget = new Budget("July Budget", 5);
-            JsonWriter writer = new JsonWriter("./data/testWriterEmptyWorkroom.json");
+            JsonWriter writer = new JsonWriter("./data/testWriterEmptyBudget.json");
             writer.open();
             writer.write(budget);
             writer.close();
 
-            JsonReader reader = new JsonReader("./data/testWriterEmptyWorkroom.json");
+            JsonReader reader = new JsonReader("./data/testWriterEmptyBudget.json");
             budget = reader.read();
             assertEquals("July Budget", budget.getName());
             assertEquals(5, budget.getBalance());
@@ -50,12 +49,12 @@ public class JsonWriteTest extends JsonTest{
             Budget budget = new Budget("July Budget", 5);
             budget.addExpense(new Expense("Coffee", 5, "Transportation"));
             budget.addExpense(new Expense("Ben", 51, "Groceries and Food"));
-            JsonWriter writer = new JsonWriter("./data/testWriterGeneralWorkroom.json");
+            JsonWriter writer = new JsonWriter("./data/testWriterGeneralBudget.json");
             writer.open();
             writer.write(budget);
             writer.close();
 
-            JsonReader reader = new JsonReader("./data/testWriterGeneralWorkroom.json");
+            JsonReader reader = new JsonReader("./data/testWriterGeneralBudget.json");
             budget = reader.read();
             assertEquals("July Budget", budget.getName());
             assertEquals(-51, budget.getBalance());

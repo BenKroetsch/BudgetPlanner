@@ -23,7 +23,7 @@ public class JsonReadTest extends JsonTest{
 
     @Test
     void testReaderEmptyBudget() {
-        JsonReader reader = new JsonReader("./data/testWriterEmptyWorkRoom.json");
+        JsonReader reader = new JsonReader("./data/testWriterEmptyBudget.json");
         try {
             Budget budget = reader.read();
             assertEquals("July Budget", budget.getName());
@@ -35,7 +35,7 @@ public class JsonReadTest extends JsonTest{
 
     @Test
     void testReaderGeneralBudget() {
-        JsonReader reader = new JsonReader("./data/testWriterGeneralWorkRoom.json");
+        JsonReader reader = new JsonReader("./data/testWriterGeneralBudget.json");
         try {
             Budget budget = reader.read();
             assertEquals("July Budget", budget.getName());

@@ -8,17 +8,17 @@ import persistence.JsonWriter;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Objects;
 import java.util.Scanner;
 
 import static java.lang.Math.abs;
 
 public class BudgetApp {
-    private static final String JSON_STORE = "./data/workroom.json";
+    private static final String JSON_STORE = "./data/budget.json";
     private Scanner input = new Scanner(System.in);
     private Budget userBudget;
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
+    boolean keepGoing = true;
 
 
     // Effects: runs budget app
@@ -47,10 +47,8 @@ public class BudgetApp {
             //clears next line to avoid bug
             input.nextLine();
             userBudget = new Budget(name, desiredBudget);
-            runBudget();
-        } else {
+        } else if (scan == 2) {
             loadBudget();
-            runBudget();
         }
     }
 
@@ -68,33 +66,27 @@ public class BudgetApp {
 
     //Effects: processes user input
     private void runBudget() {
-        boolean keepGoing = true;
         while (keepGoing) {
             displayMenu();
             int scan = input.nextInt();
 
             if (scan == 1) {
-                keepGoing = false;
                 displayBudget();
 
             } else if (scan == 2) {
-                keepGoing = false;
                 createExpense();
 
             } else if (scan == 3) {
-                keepGoing = false;
                 removeExpense();
 
             } else if (scan == 4) {
-                keepGoing = false;
                 saveBudget();
 
             } else if (scan == 5) {
                 keepGoing = false;
 
             } else {
-                System.out.println("Error, please type a number 1-4.");
-
+                System.out.println("Error, please type a number 1-5.");
             }
         }
     }
@@ -114,8 +106,8 @@ public class BudgetApp {
 
         displayBudgetCheck();
         System.out.println("To return to menu enter 1, to quit enter 2.");
-        if (input.nextInt() == 1) {
-            runBudget();
+        if (input.nextInt() == 2) {
+            keepGoing = false;
         }
     }
 
@@ -165,7 +157,6 @@ public class BudgetApp {
         //clears next line to avoid bug
         input.nextLine();
 
-        //System.out.println();
         System.out.println("Enter expenses name:");
         String expenseName = input.nextLine();
         System.out.println("Enter expenses cost:");
@@ -180,8 +171,6 @@ public class BudgetApp {
         String expenseCategory = assignCategory(category);
         Expense a1 = new Expense(expenseName, expenseCost, expenseCategory);
         userBudget.addExpense(a1);
-
-        runBudget();
     }
 
     // Effects: helper for create budget, assigns expense to category based on user input
@@ -202,31 +191,29 @@ public class BudgetApp {
 
     // Effects: allows user to remove an expense
     private void removeExpense() {
-        boolean expenseLoop = true;
-        while (expenseLoop) {
-            //clears next line to avoid bug
+        //boolean expenseLoop = true;
+        //clears next line to avoid bug
+        input.nextLine();
 
-            System.out.println("Enter the name of the expense you would like removed: ");
-            printList(userBudget.getExpenseList());
-            String expenseStringToRemove = input.nextLine();
-            ArrayList<String> expenseStringList = convertList(userBudget.getExpenseList());
+        System.out.println("Enter the name of the expense you would like removed: ");
+        printList(userBudget.getExpenseList());
+        String expenseStringToRemove = input.nextLine();
+        ArrayList<String> expenseStringList = convertList(userBudget.getExpenseList());
 
-            if (expenseStringList.contains(expenseStringToRemove)) {
-                int index = expenseStringList.indexOf(expenseStringToRemove);
-                Expense expenseToRemove = userBudget.getExpenseList().get(index);
-                userBudget.removeExpense(expenseToRemove);
-                System.out.println("Expense has been removed! ");
-                expenseLoop = false;
-                runBudget();
-            } else {
-                System.out.println("The expense does not exist.\n"
-                        + "To return to menu enter 1, to quit enter 2.");
-                if (input.nextInt() == 1) {
-                    runBudget();
-                }
+        if (expenseStringList.contains(expenseStringToRemove)) {
+            int index = expenseStringList.indexOf(expenseStringToRemove);
+            Expense expenseToRemove = userBudget.getExpenseList().get(index);
+            userBudget.removeExpense(expenseToRemove);
+            System.out.println("Expense has been removed! ");
+        } else {
+            System.out.println("The expense does not exist.\n"
+                    + "To return to menu enter 1, to quit enter 2.");
+            if (input.nextInt() == 2) {
+                keepGoing = false;
             }
         }
     }
+
 
     // EFFECTS: saves the budget to file
     private void saveBudget() {
@@ -238,7 +225,6 @@ public class BudgetApp {
         } catch (FileNotFoundException e) {
             System.out.println("Unable to write to file: " + JSON_STORE);
         }
-        runBudget();
     }
 
     // MODIFIES: this
@@ -250,7 +236,6 @@ public class BudgetApp {
         } catch (IOException e) {
             System.out.println("Unable to read from file: " + JSON_STORE);
         }
-        runBudget();
     }
 }
 

@@ -4,6 +4,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import persistence.Writable;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -11,8 +12,9 @@ public class Budget implements Writable {
     private String name;
     private int budget;
     private int balance;
-
     private ArrayList<Expense> expenseList = new ArrayList<>();
+
+
 
     //Requires: budget is an integer
     //Effects: creates new budget

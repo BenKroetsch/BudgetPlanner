@@ -21,6 +21,7 @@ public class Expense implements Writable {
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("name", name);
+
         json.put("cost", String.valueOf(cost));
         json.put("category", category);
         return json;
