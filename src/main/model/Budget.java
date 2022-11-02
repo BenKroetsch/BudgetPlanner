@@ -10,15 +10,15 @@ import java.util.Objects;
 
 public class Budget implements Writable {
     private String name;
-    private int budget;
-    private int balance;
+    private double budget;
+    private double balance;
     private ArrayList<Expense> expenseList = new ArrayList<>();
 
 
 
     //Requires: budget is an integer
     //Effects: creates new budget
-    public Budget(String name, int budget) {
+    public Budget(String name, double budget) {
         this.name = name;
         this.budget = budget;
         this.balance = budget;
@@ -73,16 +73,23 @@ public class Budget implements Writable {
         return jsonArray;
     }
 
+    public ArrayList<String> printBudgetSummary() {
+        ArrayList<String> listForTable = new ArrayList<>();
+        for (Expense s: expenseList) {
+            listForTable.add(s.printSummary());
+        }
+        return listForTable;
+    }
 
     public String getName() {
         return name;
     }
 
-    public int getBudget() {
+    public double getBudget() {
         return budget;
     }
 
-    public int getBalance() {
+    public double getBalance() {
         return balance;
     }
 

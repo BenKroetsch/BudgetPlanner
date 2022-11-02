@@ -4,14 +4,14 @@ import org.json.JSONObject;
 import persistence.Writable;
 
 public class Expense implements Writable {
-    private int cost;
+    private double cost;
     private String name;
     private String category;
 
     //Requires: expense to be an integer
     //Modifies: this
     //effects: creates new expense
-    public Expense(String name, int cost, String category) {
+    public Expense(String name, double cost, String category) {
         this.name = name;
         this.cost = cost;
         this.category = category;
@@ -21,10 +21,13 @@ public class Expense implements Writable {
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("name", name);
-
         json.put("cost", String.valueOf(cost));
         json.put("category", category);
         return json;
+    }
+
+    public String printSummary() {
+        return "Expense: " + name + ", Cost: " + cost + ", Category: " + category;
     }
 
     public String getCategory() {
@@ -34,8 +37,7 @@ public class Expense implements Writable {
     public String getName() {
         return name;
     }
-
-    public int getCost() {
+    public double getCost() {
         return cost;
     }
 }

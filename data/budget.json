@@ -1,9 +1,146 @@
 {
-    "Expense List": [{
-        "cost": "3",
-        "name": "b",
-        "category": "Groceries and Food"
-    }],
-    "Budget Amount": "3",
-    "Budget Name": "july"
+    "Expense List": [
+        {
+            "cost": "3.5",
+            "name": "bluechip beans",
+            "category": "Groceries and Food"
+        },
+        {
+            "cost": "22.3",
+            "name": "noodle emporium feast",
+            "category": "Groceries and Food"
+        },
+        {
+            "cost": "43.0",
+            "name": "Upass",
+            "category": "Transportation"
+        },
+        {
+            "cost": "35.67",
+            "name": "wifi",
+            "category": "Housing"
+        },
+        {
+            "cost": "958.0",
+            "name": "Bathing with Jeev",
+            "category": "Entertainment"
+        },
+        {
+            "cost": "8.4",
+            "name": "dish soap",
+            "category": "Groceries and Food"
+        },
+        {
+            "cost": "567.0",
+            "name": "pay loanshark",
+            "category": "Housing"
+        },
+        {
+            "cost": "986.0",
+            "name": "Casino with Adam",
+            "category": "Entertainment"
+        },
+        {
+            "cost": "400.0",
+            "name": "Loanshark is back",
+            "category": "Housing"
+        },
+        {
+            "cost": "6.4",
+            "name": "Costco muffins",
+            "category": "Groceries and Food"
+        },
+        {
+            "cost": "2080.34",
+            "name": "Celebs with Jeev (Friday)",
+            "category": "Entertainment"
+        },
+        {
+            "cost": "94.58",
+            "name": "Quandale (@celebs with Jeev)",
+            "category": "Entertainment"
+        },
+        {
+            "cost": "3.46",
+            "name": "Tiffany",
+            "category": "Entertainment"
+        },
+        {
+            "cost": "0.0",
+            "name": "Tykreesha (BUY ONE GET ONE)",
+            "category": "Entertainment"
+        },
+        {
+            "cost": "1200.0",
+            "name": "rent",
+            "category": "Housing"
+        },
+        {
+            "cost": "0.0",
+            "name": "condoms (I don't wear these lol)",
+            "category": "Entertainment"
+        },
+        {
+            "cost": "57.98",
+            "name": "Lube",
+            "category": "Entertainment"
+        },
+        {
+            "cost": "32.48",
+            "name": "loanshark's brother alfred",
+            "category": "Housing"
+        },
+        {
+            "cost": "6000.0",
+            "name": "Bear creek trip",
+            "category": "Transportation"
+        },
+        {
+            "cost": "45672.0",
+            "name": "STI clinic bill",
+            "category": "Entertainment"
+        },
+        {
+            "cost": "94.46",
+            "name": "Gas expenses for commute",
+            "category": "Transportation"
+        },
+        {
+            "cost": "3400.0",
+            "name": "DUI lol",
+            "category": "Entertainment"
+        },
+        {
+            "cost": "3400.0",
+            "name": "shank wound (forgot to pay loanshark)",
+            "category": "Housing"
+        },
+        {
+            "cost": "3.48",
+            "name": "fuji water",
+            "category": "Groceries and Food"
+        },
+        {
+            "cost": "4.5",
+            "name": "loaf of bread",
+            "category": "Groceries and Food"
+        },
+        {
+            "cost": "60.0",
+            "name": "juice",
+            "category": "Groceries and Food"
+        },
+        {
+            "cost": "200000.0",
+            "name": "bail (not specifying this one)",
+            "category": "Housing"
+        },
+        {
+            "cost": "-500.0",
+            "name": "figured out money laundering scheme",
+            "category": "Groceries and Food"
+        }
+    ],
+    "Budget Amount": "3.3",
+    "Budget Name": "3.4"
 }
