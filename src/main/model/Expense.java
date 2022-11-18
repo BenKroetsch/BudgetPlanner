@@ -5,14 +5,14 @@ import persistence.Writable;
 
 //Class that makes an expense contained in a budget
 public class Expense implements Writable {
-    private double cost;
+    private Integer cost;
     private String name;
     private String category;
 
     //Requires: expense to be an integer
     //Modifies: this
     //effects: creates new expense
-    public Expense(String name, double cost, String category) {
+    public Expense(String name, Integer cost, String category) {
         this.name = name;
         this.cost = cost;
         this.category = category;
@@ -39,7 +39,7 @@ public class Expense implements Writable {
         return name;
     }
 
-    public double getCost() {
+    public Integer getCost() {
         return cost;
     }
 }

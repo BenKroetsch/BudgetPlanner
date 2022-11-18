@@ -16,7 +16,6 @@ import java.util.Objects;
 
 import static java.lang.Math.abs;
 
-//Budget app user interface
 public class BudgetApp extends JFrame implements ActionListener {
     private static final String JSON_STORE = "./data/budget.json";
     private Budget userBudget;
@@ -255,7 +254,7 @@ public class BudgetApp extends JFrame implements ActionListener {
             addExpense();
             update();
         } else if (e.getActionCommand().equals("Intro Button")) {
-            userBudget = new Budget(budgetName.getText(), Double.parseDouble(budgetCost.getText()));
+            userBudget = new Budget(budgetName.getText(), Integer.parseInt(budgetCost.getText()));
             update();
         }
     }
@@ -264,7 +263,7 @@ public class BudgetApp extends JFrame implements ActionListener {
     private void addExpense() {
         String name = textExpenseName.getText();
         String category = (String) categoryBox.getSelectedItem();
-        double cost = Double.parseDouble(textCostName.getText());
+        int cost = Integer.parseInt(textCostName.getText());
         userBudget.addExpense(new Expense(name, cost, category));
     }
 

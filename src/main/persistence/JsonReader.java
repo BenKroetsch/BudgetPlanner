@@ -45,7 +45,7 @@ public class JsonReader {
     private Budget parseBudget(JSONObject jsonObject) {
         String name = jsonObject.getString("Budget Name");
         String budgetString = jsonObject.getString("Budget Amount");
-        double budgetInteger = Double.valueOf(budgetString);
+        Integer budgetInteger = Integer.valueOf(budgetString);
         Budget budget = new Budget(name, budgetInteger);
         addExpenses(budget, jsonObject);
         return budget;
@@ -67,7 +67,7 @@ public class JsonReader {
         String name = jsonObject.getString("name");
         String costString = jsonObject.getString("cost");
         String category = jsonObject.getString("category");
-        Double costInteger = Double.valueOf(costString);
+        Integer costInteger = Integer.valueOf(costString);
         Expense expense = new Expense(name, costInteger, category);
         budget.addExpense(expense);
     }

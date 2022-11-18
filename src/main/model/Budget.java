@@ -11,15 +11,15 @@ import java.util.Objects;
 //Class that makes a budget
 public class Budget implements Writable {
     private String name;
-    private double budget;
-    private double balance;
+    private Integer budget;
+    private Integer balance;
     private ArrayList<Expense> expenseList = new ArrayList<>();
 
 
 
     //Requires: budget is an integer
     //Effects: creates new budget
-    public Budget(String name, double budget) {
+    public Budget(String name, Integer budget) {
         this.name = name;
         this.budget = budget;
         this.balance = budget;
@@ -86,11 +86,11 @@ public class Budget implements Writable {
         return name;
     }
 
-    public double getBudget() {
+    public Integer getBudget() {
         return budget;
     }
 
-    public double getBalance() {
+    public Integer getBalance() {
         return balance;
     }
 

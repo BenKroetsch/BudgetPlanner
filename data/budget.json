@@ -1,9 +1,9 @@
 {
     "Expense List": [{
-        "cost": "3.0",
-        "name": "e",
+        "cost": "2.0",
+        "name": "d2",
         "category": "Transportation"
     }],
     "Budget Amount": "3.0",
-    "Budget Name": "july"
+    "Budget Name": "d"
 }
