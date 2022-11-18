@@ -15,7 +15,6 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 import static java.lang.Math.abs;
-import static jdk.nashorn.internal.objects.NativeMath.round;
 
 public class BudgetApp extends JFrame implements ActionListener {
     private static final String JSON_STORE = "./data/budget.json";
@@ -86,7 +85,7 @@ public class BudgetApp extends JFrame implements ActionListener {
 
     }
 
-
+    // Effects: updates screen to show changes
     private void update() {
         frame.getContentPane().removeAll();
         menuCreator();
@@ -98,6 +97,7 @@ public class BudgetApp extends JFrame implements ActionListener {
         frame.setVisible(true);
     }
 
+    //Effects: creates a left base frame
     private void leftFrame() {
         JList<String> list = new JList<>(userBudget.printBudgetSummary().toArray(new String[0]));
 
@@ -107,6 +107,7 @@ public class BudgetApp extends JFrame implements ActionListener {
         leftPanel.add(new JScrollPane(list));
     }
 
+    //Effects: creates a right base frame
     private void rightFrame() {
         createRightPanels();
 
@@ -138,6 +139,7 @@ public class BudgetApp extends JFrame implements ActionListener {
         container5.add(toAddExpense);
     }
 
+    //Effects: creates a right base panel
     private void createRightPanels() {
         rightPanel = new JPanel();
         rightPanel.setLayout(new GridLayout(5, 1, 5, 2));
@@ -159,7 +161,7 @@ public class BudgetApp extends JFrame implements ActionListener {
         rightPanel.add(container5);
     }
 
-
+    //Effects: creates a bottom left base frame
     private void bottomLeftFrame() {
         bottomContainer = new JPanel(new FlowLayout(FlowLayout.CENTER));
         JPanel bottomLeft = new JPanel(new GridLayout(5, 1, 2, 2));
@@ -187,6 +189,7 @@ public class BudgetApp extends JFrame implements ActionListener {
         frame.add(bottomContainer, BorderLayout.SOUTH);
     }
 
+    //Effects: creates a right base frame
     private void bottomRightFrame() {
         JPanel bottomRight = new JPanel(new FlowLayout(FlowLayout.RIGHT));
 
@@ -200,6 +203,7 @@ public class BudgetApp extends JFrame implements ActionListener {
         bottomContainer.add(bottomRight, BorderLayout.EAST);
     }
 
+    //Effects: prints a string concatenate list of expense or responds with no budget.
     private ArrayList<String> printList() {
         ArrayList<String> expenseList = new ArrayList<>();
         if (userBudget.getExpenseList().isEmpty()) {
@@ -211,6 +215,7 @@ public class BudgetApp extends JFrame implements ActionListener {
         return expenseList;
     }
 
+    //Effects: creates a menu
     private void menuCreator() {
         JMenuBar bar = new JMenuBar();
         JMenu optionsMenu = new JMenu("Options");
@@ -233,6 +238,7 @@ public class BudgetApp extends JFrame implements ActionListener {
         frame.setJMenuBar(bar);
     }
 
+    //Effects: responds to user input
     public void actionPerformed(ActionEvent e) {
         if (Objects.equals(e.getActionCommand(), "Save")) {
             saveBudget();
@@ -253,13 +259,15 @@ public class BudgetApp extends JFrame implements ActionListener {
         }
     }
 
+    //Effects: adds expense to combo pane
     private void addExpense() {
         String name = textExpenseName.getText();
         String category = (String) categoryBox.getSelectedItem();
         double cost = Double.parseDouble(textCostName.getText());
-        userBudget.addExpense(new Expense(name,cost,category));
+        userBudget.addExpense(new Expense(name, cost, category));
     }
 
+    //Effects: removes expense to combo pane
     private void removeExpense() {
         ArrayList<String> expenseStringList = convertList(userBudget.getExpenseList());
         if (expenseStringList.contains(removeExpenseBox.getSelectedItem())) {
@@ -268,6 +276,7 @@ public class BudgetApp extends JFrame implements ActionListener {
             userBudget.removeExpense(expenseToRemove);
         }
     }
+
 
     // Effects: Helper for display budget, checks if user has exceeded budget,
     // if so displays amount over budget, else shows remaining budget amount
