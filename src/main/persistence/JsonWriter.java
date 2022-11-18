@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
+//JSON writer class that writes onto JSON file in data
 public class JsonWriter {
     private static final int TAB = 4;
     private PrintWriter writer;

@@ -16,6 +16,7 @@ import java.util.Objects;
 
 import static java.lang.Math.abs;
 
+//Budget app user interface
 public class BudgetApp extends JFrame implements ActionListener {
     private static final String JSON_STORE = "./data/budget.json";
     private Budget userBudget;

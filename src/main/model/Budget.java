@@ -8,6 +8,7 @@ import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Objects;
 
+//Class that makes a budget
 public class Budget implements Writable {
     private String name;
     private double budget;

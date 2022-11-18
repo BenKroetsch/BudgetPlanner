@@ -3,6 +3,7 @@ package model;
 import org.json.JSONObject;
 import persistence.Writable;
 
+//Class that makes an expense contained in a budget
 public class Expense implements Writable {
     private double cost;
     private String name;
@@ -37,6 +38,7 @@ public class Expense implements Writable {
     public String getName() {
         return name;
     }
+
     public double getCost() {
         return cost;
     }

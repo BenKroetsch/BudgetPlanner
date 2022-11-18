@@ -11,6 +11,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
 
+//JSON reader class that reads from JSON file in data
 public class JsonReader {
     private String source;
 
