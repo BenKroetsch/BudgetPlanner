@@ -18,6 +18,7 @@ public class Expense implements Writable {
         this.category = category;
     }
 
+    //Effects: converts expense into json
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
@@ -27,6 +28,7 @@ public class Expense implements Writable {
         return json;
     }
 
+    //Effects: prints a summary individual expenses
     public String printSummary() {
         return "Expense: " + name + ", Cost: " + cost + ", Category: " + category;
     }

@@ -54,6 +54,7 @@ public class Budget implements Writable {
         return totalMoney;
     }
 
+    //Effects: converts budget into json
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
@@ -74,6 +75,7 @@ public class Budget implements Writable {
         return jsonArray;
     }
 
+    //Effects: prints a list of each individual expenses summary
     public ArrayList<String> printBudgetSummary() {
         ArrayList<String> listForTable = new ArrayList<>();
         for (Expense s: expenseList) {
