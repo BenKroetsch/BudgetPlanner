@@ -40,6 +40,7 @@ public class BudgetApp extends JFrame implements ActionListener {
     private JComboBox categoryBox;
     private JTextField textCostName;
     private JTextField textExpenseName;
+    private JLabel imageAsLabel;
 
     // Effects: runs budget app
     public BudgetApp() {
@@ -66,6 +67,10 @@ public class BudgetApp extends JFrame implements ActionListener {
         introPanel.add(introPanelBottom);
         introPanel.add(introPanelButton);
 
+        ImageIcon tobImage = new ImageIcon("data/tobs.jpg");
+        imageAsLabel = new JLabel(tobImage);
+        introPanel.add(imageAsLabel);
+
         JLabel budgetNameIcon = new JLabel("Budget Name: ");
         introPanelTop.add(budgetNameIcon);
         budgetName = new JTextField(10);
@@ -82,7 +87,6 @@ public class BudgetApp extends JFrame implements ActionListener {
         frame.add(introPanel);
         confirmButton.addActionListener(this);
         frame.setVisible(true);
-
     }
 
     // Effects: updates screen to show changes
