@@ -18,15 +18,15 @@ class MyModelTest {
 
     @BeforeEach
     public void initialize() {
-        testBudget1 = new Budget("Ben's Budget", 400);
-        testBudget2 = new Budget("Joe's Budget", 1000);
-        expense1 = new Expense("Hockey", 500, "Entertainment");
-        expense2 = new Expense("Car Insurance", 450, "Entertainment");
-        expense3 = new Expense("Rent", 1000, "Housing");
-        expense4 = new Expense("Coffee", 3, "Groceries and Food");
-        expense5 = new Expense("Soccer", 100, "Entertainment");
-        expense6 = new Expense("Zero", 0, "Transportation");
-        expense7 = new Expense("Car", 100, "Transportation");
+        testBudget1 = new Budget("Ben's Budget", 400.00);
+        testBudget2 = new Budget("Joe's Budget", 1000.00);
+        expense1 = new Expense("Hockey", 500.00, "Entertainment");
+        expense2 = new Expense("Car Insurance", 450.00, "Entertainment");
+        expense3 = new Expense("Rent", 1000.00, "Housing");
+        expense4 = new Expense("Coffee", 3.00, "Groceries and Food");
+        expense5 = new Expense("Soccer", 100.00, "Entertainment");
+        expense6 = new Expense("Zero", 0.00, "Transportation");
+        expense7 = new Expense("Car", 100.00, "Transportation");
     }
 
     @Test
@@ -132,13 +132,13 @@ class MyModelTest {
 
     @Test
     public void printSummaryTest() {
-        assertEquals(expense1.printSummary(), "Expense: Hockey, Cost: 500, Category: Entertainment");
+        assertEquals(expense1.printSummary(), "Expense: Hockey, Cost: 500.0, Category: Entertainment");
         testBudget2.addExpense(expense1);
         testBudget2.addExpense(expense2);
         assertEquals(testBudget2.printBudgetSummary().get(0),
-                "Expense: Hockey, Cost: 500, Category: Entertainment");
+                "Expense: Hockey, Cost: 500.0, Category: Entertainment");
         assertEquals(testBudget2.printBudgetSummary().get(1),
-                "Expense: Car Insurance, Cost: 450, Category: Entertainment");
+                "Expense: Car Insurance, Cost: 450.0, Category: Entertainment");
 
 
     }

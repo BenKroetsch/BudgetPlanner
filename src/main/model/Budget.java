@@ -11,18 +11,19 @@ import java.util.Objects;
 //Class that makes a budget
 public class Budget implements Writable {
     private String name;
-    private Integer budget;
-    private Integer balance;
+    private Double budget;
+    private Double balance;
     private ArrayList<Expense> expenseList = new ArrayList<>();
 
 
 
     //Requires: budget is an integer
     //Effects: creates new budget
-    public Budget(String name, Integer budget) {
+    public Budget(String name, Double budget) {
         this.name = name;
         this.budget = budget;
         this.balance = budget;
+        EventLog.getInstance().logEvent(new Event("Created budget named " + this.name));
     }
 
     //Requires:
@@ -32,6 +33,8 @@ public class Budget implements Writable {
     public void addExpense(Expense expense) {
         this.balance -= expense.getCost();
         expenseList.add(expense);
+        EventLog.getInstance().logEvent(new Event("Added " + expense.getName()
+                + " to the budget"));
     }
 
     //requires: expense to be removed is already  inside list
@@ -41,11 +44,13 @@ public class Budget implements Writable {
     public void removeExpense(Expense expense) {
         this.balance += expense.getCost();
         expenseList.remove(expense);
+        EventLog.getInstance().logEvent(new Event("Removed " + expense.getName()
+                + " from budget"));
     }
 
     //Effects: adds up total money of all expenses in list
-    public int addUpList(String category) {
-        int totalMoney = 0;
+    public Double addUpList(String category) {
+        Double totalMoney = 0.00;
         for (Expense expense : expenseList) {
             if (Objects.equals(category, expense.getCategory())) {
                 totalMoney += expense.getCost();
@@ -71,7 +76,6 @@ public class Budget implements Writable {
         for (Expense expense : expenseList) {
             jsonArray.put(expense.toJson());
         }
-
         return jsonArray;
     }
 
@@ -88,11 +92,11 @@ public class Budget implements Writable {
         return name;
     }
 
-    public Integer getBudget() {
+    public Double getBudget() {
         return budget;
     }
 
-    public Integer getBalance() {
+    public Double getBalance() {
         return balance;
     }
 

@@ -1,6 +1,8 @@
 package persistence;
 
 import model.Budget;
+import model.Event;
+import model.EventLog;
 import model.Expense;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -27,6 +29,7 @@ public class JsonReader {
     public Budget read() throws IOException {
         String jsonData = readFile(source);
         JSONObject jsonObject = new JSONObject(jsonData);
+        EventLog.getInstance().logEvent(new Event("Loaded the budget"));
         return parseBudget(jsonObject);
     }
 
@@ -45,8 +48,8 @@ public class JsonReader {
     private Budget parseBudget(JSONObject jsonObject) {
         String name = jsonObject.getString("Budget Name");
         String budgetString = jsonObject.getString("Budget Amount");
-        Integer budgetInteger = Integer.valueOf(budgetString);
-        Budget budget = new Budget(name, budgetInteger);
+        Double doubleBudget = Double.valueOf(budgetString);
+        Budget budget = new Budget(name, doubleBudget);
         addExpenses(budget, jsonObject);
         return budget;
     }
@@ -67,8 +70,8 @@ public class JsonReader {
         String name = jsonObject.getString("name");
         String costString = jsonObject.getString("cost");
         String category = jsonObject.getString("category");
-        Integer costInteger = Integer.valueOf(costString);
-        Expense expense = new Expense(name, costInteger, category);
+        Double doubleCost = Double.valueOf(costString);
+        Expense expense = new Expense(name, doubleCost, category);
         budget.addExpense(expense);
     }
 }

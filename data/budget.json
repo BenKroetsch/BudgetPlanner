@@ -1,9 +1,16 @@
 {
-    "Expense List": [{
-        "cost": "2",
-        "name": "e",
-        "category": "Transportation"
-    }],
+    "Expense List": [
+        {
+            "cost": "2",
+            "name": "f2",
+            "category": "Transportation"
+        },
+        {
+            "cost": "2",
+            "name": "f",
+            "category": "Transportation"
+        }
+    ],
     "Budget Amount": "2",
-    "Budget Name": "s"
+    "Budget Name": "ben"
 }

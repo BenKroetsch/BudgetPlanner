@@ -1,16 +1,16 @@
 {
     "Expense List": [
         {
-            "cost": "5",
+            "cost": "5.0",
             "name": "Coffee",
             "category": "Transportation"
         },
         {
-            "cost": "51",
+            "cost": "51.0",
             "name": "Ben",
             "category": "Groceries and Food"
         }
     ],
-    "Budget Amount": "5",
+    "Budget Amount": "5.0",
     "Budget Name": "July Budget"
 }

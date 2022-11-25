@@ -1,10 +1,10 @@
 package ui;
 
 import model.Budget;
+import model.EventLog;
 import model.Expense;
 import persistence.JsonReader;
 import persistence.JsonWriter;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -250,6 +250,7 @@ public class BudgetApp extends JFrame implements ActionListener {
             loadBudget();
             update();
         } else if (e.getActionCommand().equals("Exit")) {
+            printLogEvents();
             System.exit(0);
         } else if (e.getActionCommand().equals("Remove Button")) {
             removeExpense();
@@ -258,17 +259,28 @@ public class BudgetApp extends JFrame implements ActionListener {
             addExpense();
             update();
         } else if (e.getActionCommand().equals("Intro Button")) {
-            userBudget = new Budget(budgetName.getText(), Integer.parseInt(budgetCost.getText()));
+            Double cost = Double.parseDouble(budgetCost.getText());
+            userBudget = new Budget(budgetName.getText(), cost);
             update();
         }
+    }
+
+    //Effects: prints the event log to console
+    public void printLogEvents() {
+        System.out.println("------------------------------------------------------");
+        System.out.println("EVENT LOG: \n");
+        for (model.Event event: EventLog.getInstance()) {
+            System.out.println(event.getDescription() + ", " + event.getDate() + "\n");
+        }
+        System.out.println("------------------------------------------------------");
     }
 
     //Effects: adds expense to combo pane
     private void addExpense() {
         String name = textExpenseName.getText();
         String category = (String) categoryBox.getSelectedItem();
-        int cost = Integer.parseInt(textCostName.getText());
-        userBudget.addExpense(new Expense(name, cost, category));
+        Double doubleCost = Double.valueOf(textCostName.getText());
+        userBudget.addExpense(new Expense(name, doubleCost, category));
     }
 
     //Effects: removes expense to combo pane

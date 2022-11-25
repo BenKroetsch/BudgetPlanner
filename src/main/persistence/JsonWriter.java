@@ -1,6 +1,8 @@
 package persistence;
 
 import model.Budget;
+import model.Event;
+import model.EventLog;
 import org.json.JSONObject;
 
 import java.io.File;
@@ -30,6 +32,7 @@ public class JsonWriter {
     public void write(Budget budget) {
         JSONObject json = budget.toJson();
         saveToFile(json.toString(TAB));
+        EventLog.getInstance().logEvent(new Event("Saved the budget"));
     }
 
     // MODIFIES: this

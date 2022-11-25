@@ -27,7 +27,7 @@ public class JsonReadTest extends JsonTest{
         try {
             Budget budget = reader.read();
             assertEquals("July Budget", budget.getName());
-            assertEquals(0, budget.getExpenseList().size());
+            assertEquals(0.0, budget.getExpenseList().size());
         } catch (IOException e) {
             fail("Couldn't read from file");
         }
@@ -39,9 +39,9 @@ public class JsonReadTest extends JsonTest{
         try {
             Budget budget = reader.read();
             assertEquals("July Budget", budget.getName());
-            assertEquals(2, budget.getExpenseList().size());
-            checkExpense("Coffee", 5, "Transportation", budget.getExpenseList().get(0));
-            checkExpense("Ben", 51, "Groceries and Food", budget.getExpenseList().get(1));
+            assertEquals(2.0, budget.getExpenseList().size());
+            checkExpense("Coffee", 5.0, "Transportation", budget.getExpenseList().get(0));
+            checkExpense("Ben", 51.0, "Groceries and Food", budget.getExpenseList().get(1));
         } catch (IOException e) {
             fail("Couldn't read from file");
         }
