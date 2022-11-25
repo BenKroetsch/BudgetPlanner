@@ -3,11 +3,15 @@ package model;
 import org.json.JSONObject;
 import persistence.Writable;
 
+import java.text.DecimalFormat;
+
 //Class that makes an expense contained in a budget
 public class Expense implements Writable {
     private Double cost;
     private String name;
     private String category;
+    private DecimalFormat decimalFormat = new DecimalFormat("0.00");
+
 
     //Requires: expense to be an integer
     //Modifies: this
@@ -30,7 +34,7 @@ public class Expense implements Writable {
 
     //Effects: prints a summary individual expenses
     public String printSummary() {
-        return "Expense: " + name + ", Cost: " + cost + ", Category: " + category;
+        return "Expense: " + name + ", Cost: " + decimalFormat.format(cost) + ", Category: " + category;
     }
 
     public String getCategory() {

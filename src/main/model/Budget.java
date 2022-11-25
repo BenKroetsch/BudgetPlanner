@@ -5,6 +5,7 @@ import org.json.JSONObject;
 import persistence.Writable;
 
 import javax.swing.*;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -13,6 +14,7 @@ public class Budget implements Writable {
     private String name;
     private Double budget;
     private Double balance;
+    private DecimalFormat decimalFormat = new DecimalFormat("0.00");
     private ArrayList<Expense> expenseList = new ArrayList<>();
 
 
@@ -49,14 +51,14 @@ public class Budget implements Writable {
     }
 
     //Effects: adds up total money of all expenses in list
-    public Double addUpList(String category) {
+    public String addUpList(String category) {
         Double totalMoney = 0.00;
         for (Expense expense : expenseList) {
             if (Objects.equals(category, expense.getCategory())) {
                 totalMoney += expense.getCost();
             }
         }
-        return totalMoney;
+        return decimalFormat.format(totalMoney);
     }
 
     //Effects: converts budget into json

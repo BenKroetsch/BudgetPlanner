@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -41,6 +42,7 @@ public class BudgetApp extends JFrame implements ActionListener {
     private JTextField textCostName;
     private JTextField textExpenseName;
     private JLabel imageAsLabel;
+    private DecimalFormat decimalFormat = new DecimalFormat("0.00");
 
     // Effects: runs budget app
     public BudgetApp() {
@@ -171,17 +173,17 @@ public class BudgetApp extends JFrame implements ActionListener {
         JPanel bottomLeft = new JPanel(new GridLayout(5, 1, 2, 2));
         JLabel summary = new JLabel(displayBudgetCheck());
         summary.setFont(new Font(Font.SERIF, Font.PLAIN, 15));
-        JLabel categoryCost1 = new JLabel("You have spent "
-                + userBudget.addUpList("Transportation") + "$ on transportation.");
+        JLabel categoryCost1 = new JLabel("You have spent $"
+                + userBudget.addUpList("Transportation") + " on transportation.");
         categoryCost1.setFont(new Font(Font.SERIF, Font.PLAIN, 15));
-        JLabel categoryCost2 = new JLabel("You have spent "
-                + userBudget.addUpList("Groceries and Food") + "$ on groceries and food.");
+        JLabel categoryCost2 = new JLabel("You have spent $"
+                + userBudget.addUpList("Groceries and Food") + " on groceries and food.");
         categoryCost2.setFont(new Font(Font.SERIF, Font.PLAIN, 15));
-        JLabel categoryCost3 = new JLabel("You have spent "
-                + userBudget.addUpList("Entertainment") + "$ on entertainment.");
+        JLabel categoryCost3 = new JLabel("You have spent $"
+                + userBudget.addUpList("Entertainment") + " on entertainment.");
         categoryCost3.setFont(new Font(Font.SERIF, Font.PLAIN, 15));
-        JLabel categoryCost4 = new JLabel("You have spent "
-                + userBudget.addUpList("Housing") + "$ on housing.");
+        JLabel categoryCost4 = new JLabel("You have spent $"
+                + userBudget.addUpList("Housing") + " on housing.");
         categoryCost4.setFont(new Font(Font.SERIF, Font.PLAIN, 15));
         bottomLeft.add(summary);
         bottomLeft.add(categoryCost1);
@@ -270,7 +272,7 @@ public class BudgetApp extends JFrame implements ActionListener {
         System.out.println("------------------------------------------------------");
         System.out.println("EVENT LOG: \n");
         for (model.Event event: EventLog.getInstance()) {
-            System.out.println(event.getDescription() + ", " + event.getDate() + "\n");
+            System.out.println(event.getDescription() + event.getDate());
         }
         System.out.println("------------------------------------------------------");
     }
@@ -298,10 +300,10 @@ public class BudgetApp extends JFrame implements ActionListener {
     // if so displays amount over budget, else shows remaining budget amount
     public String displayBudgetCheck() {
         if (userBudget.getBalance() <= 0) {
-            return "You have 0$ left to spend. You are "
-                    + abs(userBudget.getBalance()) + "$ over your budget.";
+            return "You have $0.00 left to spend. You are "
+                    + decimalFormat.format(abs(userBudget.getBalance())) + "$ over your budget.";
         }
-        return "You have " + userBudget.getBalance() + "$ left to spend.";
+        return "You have $" + decimalFormat.format(userBudget.getBalance()) + " left to spend.";
     }
 
 
