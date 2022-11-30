@@ -41,3 +41,30 @@ then typing in the appropriate boxes the fields for an expense, and clicking the
 they will be displayed in a list format.
 - You can save the state of my application by clicking options in the top left corner menu and clicking save.
 - You can reload the state of my application by clicking options in the top left corner of menu and clicking load. 
+
+
+# Phase 4: Task 2
+
+EVENT LOG:
+
+Created budget named Bens July Budget Tue Nov 29 16:40:23 PST 2022
+
+Added Coffee  to the budget Tue Nov 29 16:40:36 PST 2022
+
+Added Bus Pass to the budget Tue Nov 29 16:40:51 PST 2022
+
+Added Rent to the budget Tue Nov 29 16:41:06 PST 2022
+
+Added Playstation 5 to the budget Tue Nov 29 16:41:21 PST 2022
+
+Added Donut to the budget Tue Nov 29 16:41:32 PST 2022
+
+Removed Donut from budget Tue Nov 29 16:41:36 PST 2022
+
+Saved the budget Tue Nov 29 16:41:42 PST 2022
+
+
+# Phase 4: Task 3
+If I had more time I would refactor my UI class to and create new classes JPanels and JComponents. 
+This would abstract many of the features make my project have reduced coupling and higher cohesion.
+It would also make the code much more readable and easy to extend when I would like to add more components.

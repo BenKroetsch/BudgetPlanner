@@ -1,16 +1,26 @@
 {
     "Expense List": [
         {
-            "cost": "2",
-            "name": "f2",
+            "cost": "20.0",
+            "name": "Coffee ",
+            "category": "Groceries and Food"
+        },
+        {
+            "cost": "49.99",
+            "name": "Bus Pass",
             "category": "Transportation"
         },
         {
-            "cost": "2",
-            "name": "f",
-            "category": "Transportation"
+            "cost": "1000.0",
+            "name": "Rent",
+            "category": "Housing"
+        },
+        {
+            "cost": "599.89",
+            "name": "Playstation 5",
+            "category": "Entertainment"
         }
     ],
-    "Budget Amount": "2",
-    "Budget Name": "ben"
+    "Budget Amount": "500.0",
+    "Budget Name": "Bens July Budget"
 }

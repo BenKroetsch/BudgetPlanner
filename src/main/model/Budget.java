@@ -36,7 +36,7 @@ public class Budget implements Writable {
         this.balance -= expense.getCost();
         expenseList.add(expense);
         EventLog.getInstance().logEvent(new Event("Added " + expense.getName()
-                + " to the budget"));
+                + " to the budget "));
     }
 
     //requires: expense to be removed is already  inside list
@@ -47,7 +47,7 @@ public class Budget implements Writable {
         this.balance += expense.getCost();
         expenseList.remove(expense);
         EventLog.getInstance().logEvent(new Event("Removed " + expense.getName()
-                + " from budget"));
+                + " from budget "));
     }
 
     //Effects: adds up total money of all expenses in list
